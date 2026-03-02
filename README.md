@@ -2,7 +2,7 @@
 
 **Visual configuration editor for [OpenClaw](https://openclaw.ai) — build your `openclaw.json` without touching raw JSON.**
 
-> **[🚀 Try it live →](https://yourusername.github.io/clawforge/)**
+> **[🚀 Try it live →](https://omaquu.github.io/clawforge/)**
 
 ---
 
