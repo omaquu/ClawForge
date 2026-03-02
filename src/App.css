@@ -1,0 +1,190 @@
+/* App Layout */
+.app-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-right: var(--glass-border);
+  gap: 4px;
+  z-index: 10;
+}
+
+.sidebar-logo {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  user-select: none;
+}
+
+.sidebar-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.sidebar-btn:hover {
+  background: var(--surface-2);
+  color: var(--text-secondary);
+}
+
+.sidebar-btn.active {
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent-primary-hover);
+}
+
+.sidebar-btn.active::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: var(--accent-primary);
+  border-radius: 0 3px 3px 0;
+}
+
+.sidebar-btn .sidebar-tooltip {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 100;
+}
+
+.sidebar-btn:hover .sidebar-tooltip {
+  opacity: 1;
+}
+
+/* Editor Panel */
+.editor-panel {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 32px;
+}
+
+/* JSON Panel */
+.json-panel {
+  width: var(--json-panel-width);
+  min-width: 360px;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  :root {
+    --json-panel-width: 38%;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 8px 16px;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: var(--glass-border);
+  }
+
+  .sidebar-logo {
+    margin-bottom: 0;
+    margin-right: 12px;
+  }
+
+  .sidebar-btn.active::before {
+    left: 50%;
+    top: auto;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .json-panel {
+    width: 100%;
+    min-width: unset;
+    height: 40vh;
+    border-left: none;
+    border-top: var(--glass-border);
+  }
+
+  .editor-panel {
+    padding: 20px;
+  }
+}
+
+/* JSON Editor overrides */
+.json-editor-textarea {
+  outline: none !important;
+}
+
+.json-editor-textarea::selection {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+/* PrismJS overrides for our dark theme */
+.token.property {
+  color: #818cf8 !important;
+}
+
+.token.string {
+  color: #86efac !important;
+}
+
+.token.number {
+  color: #fbbf24 !important;
+}
+
+.token.boolean {
+  color: #f472b6 !important;
+}
+
+.token.null {
+  color: #ef4444 !important;
+}
+
+.token.punctuation {
+  color: #6b7280 !important;
+}
